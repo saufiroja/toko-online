@@ -1,12 +1,22 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+require('dotenv/config');
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// middlewares
+app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = 3000;
-app.listen(PORT, () => {
+// routing
+const authRouter = require('./routers/auth.routers');
+
+app.use('/api', authRouter);
+
+// connection server
+const { PORT } = process.env;
+app.listen(PORT, async () => {
   console.log(`connect on port ${PORT}`);
 });
