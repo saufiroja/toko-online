@@ -15,8 +15,12 @@ const authRouter = require('./routers/auth.routers');
 
 app.use('/api', authRouter);
 
-// connection server
-const { PORT } = process.env;
-app.listen(PORT, async () => {
-  console.log(`connect on port ${PORT}`);
+// error handling
+app.use((err, req, res, next) => {
+  return res.status(err.status || 500).json({
+    message: err.message || 'INTERNAL SERVER ERROR',
+    error: err,
+  });
 });
+
+module.exports = { app };
