@@ -7,3 +7,4 @@ Tools:
 - Sequelize (Nodejs ORM)
 - Express (Framework)
 - JWT (JSON Web Token)
+- Docker
