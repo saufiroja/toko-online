@@ -9,7 +9,14 @@
     "jest": "jest --init",
     "migrate:generate": "npx sequelize migration:generate --name",
     "db:migrate": "npx sequelize db:migrate",
-    "test": "jest"
+    "test": "jest",
+    "app:dev:rm": "docker compose rm app -s -f -v",
+    "app:dev:up": "docker compose up app -d",
+    "app:dev:restart": "npm run db:dev:rm && npm run db:dev:up",
+    "sequelize:dev:deploy": "npx sequelize db:migrate",
+    "db:dev:rm": "docker compose rm database -s -f -v",
+    "db:dev:up": "docker compose up database -d",
+    "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && ping -n 5 127.0.0.1 >nul && npm run sequelize:dev:deploy"
   },
   "author": "Muhammad Saufi Roja",
   "license": "ISC",
