@@ -22,4 +22,14 @@ describe('Auth API', () => {
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toBe('email already exists');
   });
+
+  it('[positive]should login user', async () => {
+    const res = await request(app).post('/api/login').send({
+      fullName: 'hello',
+      email: 'hello@gmail.com',
+      password: '12345678',
+    });
+    expect(res.statusCode).toBe(200);
+    expect(res.body.message).toBe('user success login');
+  });
 });

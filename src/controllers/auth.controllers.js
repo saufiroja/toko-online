@@ -32,4 +32,32 @@ const register = async (req, res, next) => {
   }
 };
 
-module.exports = { register };
+const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    // check if email does not exists
+    if (!user) {
+      return res.status(404).json({
+        message: 'user not found',
+      });
+    }
+
+    // check if password does not wrong
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(404).json({
+        message: 'password invalid',
+      });
+    }
+    // return
+    return res.status(200).json({
+      message: 'user success login',
+      user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { register, login };
