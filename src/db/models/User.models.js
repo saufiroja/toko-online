@@ -28,22 +28,6 @@ User.init(
       type: DataTypes.ENUM('User', 'Admin'),
       defaultValue: 'User',
     },
-    isActived: {
-      type: DataTypes.ENUM('Pending', 'Active'),
-      defaultValue: 'Pending',
-    },
-    otp: {
-      type: DataTypes.STRING,
-    },
-    expiredOtp: {
-      type: DataTypes.DATE,
-    },
-    resetPasswordToken: {
-      type: DataTypes.STRING,
-    },
-    expiredPasswordToken: {
-      type: DataTypes.DATE,
-    },
   },
   {
     sequelize,

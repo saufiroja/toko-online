@@ -26,22 +26,6 @@ module.exports = {
         type: Sequelize.ENUM('User', 'Admin'),
         defaultValue: 'User',
       },
-      isActived: {
-        type: Sequelize.ENUM('Pending', 'Active'),
-        defaultValue: 'Pending',
-      },
-      otp: {
-        type: Sequelize.STRING,
-      },
-      expiredOtp: {
-        type: Sequelize.DATE,
-      },
-      resetPasswordToken: {
-        type: Sequelize.STRING,
-      },
-      expiredPasswordToken: {
-        type: Sequelize.DATE,
-      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
