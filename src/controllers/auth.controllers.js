@@ -1,5 +1,6 @@
 const { User } = require('../db/models');
 const bcrypt = require('bcrypt');
+const { generateAccessToken } = require('../lib/generateToken');
 
 const register = async (req, res, next) => {
   try {
@@ -23,9 +24,13 @@ const register = async (req, res, next) => {
       password: hash,
     });
 
+    // generate token
+    const accessToken = generateAccessToken(user);
+
     return res.status(201).json({
       message: 'success register user',
       user,
+      accessToken,
     });
   } catch (error) {
     next(error);
@@ -50,10 +55,15 @@ const login = async (req, res, next) => {
         message: 'password invalid',
       });
     }
+
+    // generate token
+    const accessToken = generateAccessToken(user);
+
     // return
     return res.status(200).json({
       message: 'user success login',
       user,
+      accessToken,
     });
   } catch (error) {
     next(error);

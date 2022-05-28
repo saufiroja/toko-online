@@ -13,7 +13,7 @@
     "test": "jest",
     "app:dev:rm": "docker compose rm app -s -f -v",
     "app:dev:up": "docker compose up app -d",
-    "app:dev:restart": "npm run db:dev:rm && npm run db:dev:up",
+    "app:dev:restart": "npm run app:dev:rm && npm run app:dev:up",
     "sequelize:dev:deploy": "npx sequelize db:migrate",
     "db:dev:rm": "docker compose rm database -s -f -v",
     "db:dev:up": "docker compose up database -d",
@@ -26,6 +26,7 @@
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.7.3",
     "sequelize": "^6.19.2"
