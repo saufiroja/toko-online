@@ -14,4 +14,4 @@ Product.hasMany(Category, {
   onUpdate: 'CASCADE',
 });
 
-module.exports = { User };
+module.exports = { User, Product, Category };

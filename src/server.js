@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // routing
 const authRouter = require('./routers/auth.routers');
+const pruductRouter = require('./routers/product.routers');
 
 app.use('/api', authRouter);
+app.use('/api', pruductRouter);
 
 // error handling
 app.use((err, req, res, next) => {

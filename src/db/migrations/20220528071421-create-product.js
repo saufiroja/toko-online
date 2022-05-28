@@ -26,15 +26,6 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
-      categoryId: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'Category',
-          key: 'id',
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
