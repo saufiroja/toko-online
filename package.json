@@ -8,6 +8,7 @@
     "start:dev": "nodemon src/app.js",
     "jest": "jest --init",
     "migrate:generate": "npx sequelize migration:generate --name",
+    "migrate:undo": "npx sequelize db:migrate:undo",
     "db:migrate": "npx sequelize db:migrate",
     "test": "jest",
     "app:dev:rm": "docker compose rm app -s -f -v",
